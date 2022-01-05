@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Burst Balloons</title>
+    <link rel="icon" type="image/png" href="../public/balloon-32.png" />
+    <link rel="stylesheet" href="../public/style.css" type="text/css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Burst Balloons</h1>
+      <form class="form">
+        <label for="puzzle-size">New Puzzle:</label>
+        <input
+          type="text"
+          id="puzzle-size"
+          name="puzzleSize"
+          placeholder="3, 1, 5, 8"
+          required="required"
+        />
+        <button
+          type="button"
+          class="btn-default"
+          value="Button"
+          id="new-puzzle"
+        >
+          Submit
+        </button>
+        <div class="error-message"></div>
+      </form>
+      <div class="puzzle-container">
+        <!-- <div class="balloon shrink-on-click"
+        >
+          <img
+            src="../public/party-balloon.png"
+            alt="balloon"
+          />
+          <div class="balloon-text">test</div>
+        </div>
+        <div class="balloon"
+        >
+          <img
+            src="../public/party-balloon.png"
+            alt="balloon"
+          />
+          <div class="balloon-text">test</div>
+        </div> -->
+        
+      </div>
+
+      <div class="actions">
+        <h1 class="score">Score:</h1>
+        <h1 class="max-score">Max Possible Score:</h1>
+        <button class="undo btn btn-default btn-lg" style="color:#495057; margin-right:10px">Undo</h1>
+        <button class="reset btn btn-default btn-lg" style="color:#495057">Reset</h1>
+      </div>
+    </div>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../public/client.js"></script>
+  </body>
+</html>

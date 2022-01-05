@@ -1,0 +1,21 @@
+{
+	"name": "chess-permutation",
+	"version": "0.1.0",
+	"description": "Chess puzzle game",
+	"main": "server.js",
+	"scripts": {
+		"start": "node server.js"
+	},
+	"dependencies": {
+		"express": "^4.16.4",
+		"body-parser": "^1.19.0"
+	},
+	"repository": {
+		"url": "https://github.com/carr2283/chess-permutation"
+	},
+	"license": "MIT",
+	"keywords": [
+		"node",
+		"express"
+	]
+}
