@@ -24,7 +24,7 @@ $(document).ready(function () {
   });
 
   $(".undo").on("click", (event) => {
-    puzzle = puzzleHistory[puzzleHistory.length - 1];
+    puzzle = puzzleHistory[[...puzzleHistory.length - 1];
     score = scoreHistory[scoreHistory.length - 1];
     if (puzzleHistory.length > 1) {
       puzzleHistory.pop();
@@ -66,42 +66,52 @@ $(document).ready(function () {
     // hover starts code here
     console.log('hover');
     let idx = $(event.target).parent().index();
-    let left = idx > 0 ? idx - 1 : 1;
-    let right = idx < puzzle.length - 1 ? idx + 1 : 1;
+    console.log(idx);
+    let left = idx > 0 ? idx - 1 : -1;
+    let right = idx < puzzle.length - 1 ? idx + 1 : -1;
 
-    let $leftChild = $(".puzzle-container div:nth-child(" + (left + 1) + ")");
+    if (left != -1) {
+      let $leftChild = $(".puzzle-container div:nth-child(" + (left + 1) + ")");
+      $leftChild.css({'filter': 'brightness(0.95)'});
+      $leftChild.css({'filter': 'sepia(40%)'});
+    }
+
     let $midChild = $(".puzzle-container div:nth-child(" + (idx + 1) + ")");
-    let $rightChild = $(".puzzle-container div:nth-child(" + (right + 1) + ")");
+    $midChild.addClass('pulse');
+    $midChild.css({'filter': 'brightness(0.85)'});
+    $midChild.css({'filter': 'sepia(80%)'});
 
-    $leftChild.css({'filter': 'brightness(0.95)'})
-    $leftChild.css({'filter': 'sepia(40%)'})
+    if (right != -1) {
+      let $rightChild = $(".puzzle-container div:nth-child(" + (right + 1) + ")");
+      $rightChild.css({'filter': 'brightness(0.95)'});
+      $rightChild.css({'filter': 'sepia(40%)'});
+    }
 
-    $midChild.css({'filter': 'brightness(0.85)'})
-    $midChild.css({'filter': 'sepia(80%)'})
-
-    $rightChild.css({'filter': 'brightness(0.95)'})
-    $rightChild.css({'filter': 'sepia(40%)'})
   });
 
   $(".puzzle-container").on("mouseout", ".balloon", (event) => {
     console.log('exit');
 
     let idx = $(event.target).parent().index();
-    let left = idx > 0 ? idx - 1 : 1;
-    let right = idx < puzzle.length - 1 ? idx + 1 : 1;
+    let left = idx > 0 ? idx - 1 : -1;
+    let right = idx < puzzle.length - 1 ? idx + 1 : -1;
 
-    let $leftChild = $(".puzzle-container div:nth-child(" + (left + 1) + ")");
+    if (left != -1) {
+      let $leftChild = $(".puzzle-container div:nth-child(" + (left + 1) + ")");
+      $leftChild.css({'filter': 'brightness(1.00)'});
+      $leftChild.css({'filter': 'sepia(0%)'});
+    }
+
     let $midChild = $(".puzzle-container div:nth-child(" + (idx + 1) + ")");
-    let $rightChild = $(".puzzle-container div:nth-child(" + (right + 1) + ")");
-    
-    $leftChild.css({'filter': 'brightness(1.00)'})
-    $leftChild.css({'filter': 'sepia(0%)'})
+    $midChild.css({'filter': 'brightness(1.00)'});
+    $midChild.css({'filter': 'sepia(0%)'});
+    $midChild.removeClass('pulse');
 
-    $midChild.css({'filter': 'brightness(1.00)'})
-    $midChild.css({'filter': 'sepia(0%)'})
-
-    $rightChild.css({'filter': 'brightness(1.00)'})
-    $rightChild.css({'filter': 'sepia(0%)'})
+    if (right != -1) {
+      let $rightChild = $(".puzzle-container div:nth-child(" + (right + 1) + ")");
+      $rightChild.css({'filter': 'brightness(1.00)'});
+      $rightChild.css({'filter': 'sepia(0%)'});
+    }
   });
 
   const renderPuzzle = (puzzle) => {
@@ -110,7 +120,7 @@ $(document).ready(function () {
 
       balloonsHtmlString = balloonsHtmlString + 
                                   '<div class="balloon shrink-on-click">' +
-                                      '<img src="../public/party-balloon.png" class="balloon-img" alt="balloon"/>' + 
+                                      '<img src="../public/party-balloon.png" class="balloon-img" alt="balloon">' + 
                                       '<div class="balloon-text">' + 
                                         Number(element) +
                                       '</div>' +
